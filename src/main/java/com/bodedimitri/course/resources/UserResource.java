@@ -9,7 +9,7 @@ import com.bodedimitri.course.entities.User;
 
 @RestController // Recurso web que e implementado por um controlador rest
 @RequestMapping(value = "/users") //Nome do recurso
-public class UserResource { //Implementa o User 
+public class UserResource { //Implementa o User a
 	
 	@GetMapping // Indicia que respode ao get do HTTP
 	public ResponseEntity<User> findAll() {
