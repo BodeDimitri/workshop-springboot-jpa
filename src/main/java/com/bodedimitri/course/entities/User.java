@@ -3,10 +3,20 @@ package com.bodedimitri.course.entities;
 import java.io.Serializable;
 import java.util.Objects;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
+@Entity //Indica que e uma entidade
+@Table(name = "tb_user") //Especifica o nome da tabela do banco de dados
 public class User implements Serializable { //Por causa do trafico de dados
 	
 	private static final long serialVersionUID = 1L;
 	
+	@Id //Define a PK
+	@GeneratedValue(strategy = GenerationType.IDENTITY) //Faz com que os valores do id sejam gerados automaticamente
 	private Long id;
 	private String name;
 	private String email;
