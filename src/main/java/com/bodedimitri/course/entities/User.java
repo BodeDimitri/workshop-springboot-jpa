@@ -1,20 +1,24 @@
 package com.bodedimitri.course.entities;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity //Indica que e uma entidade
-@Table(name = "tb_user") //Especifica o nome da tabela do banco de dados
-public class User implements Serializable { //Por causa do trafico de dados
+@Table(name = "tb_users") //Especifica o nome da tabela do banco de dados
+public class User implements Serializable { //Serializable por causa do trafico de dados
 	
 	private static final long serialVersionUID = 1L;
 	
+
 	@Id //Define a PK
 	@GeneratedValue(strategy = GenerationType.IDENTITY) //Faz com que os valores do id sejam gerados automaticamente
 	private Long id;
@@ -22,6 +26,9 @@ public class User implements Serializable { //Por causa do trafico de dados
 	private String email;
 	private String phone;
 	private String password;
+	
+	@OneToMany(mappedBy = "client") //Aqui vamos colocar a variavel User que foi instanciada na nossa outra entidade
+	private List<Order> orders = new ArrayList<>(); //User--{Order
 	
 	public User() { //Por estar utilizando framework e obrigatorio um construtor sem nada
 		
@@ -74,6 +81,11 @@ public class User implements Serializable { //Por causa do trafico de dados
 	public void setPassword(String password) {
 		this.password = password;
 	}
+	
+	public List<Order> getOrders() {
+		return orders;
+	}
+	
 
 	@Override //Por padrão na maioria das vezes o meio de comparação vai ser o ID
 	public int hashCode() {
@@ -91,7 +103,5 @@ public class User implements Serializable { //Por causa do trafico de dados
 		User other = (User) obj;
 		return Objects.equals(id, other.id);
 	}
-	
-	
-	
+
 }
