@@ -10,10 +10,12 @@ import org.springframework.context.annotation.Profile;
 
 import com.bodedimitri.course.entities.Category;
 import com.bodedimitri.course.entities.Order;
+import com.bodedimitri.course.entities.OrderItem;
 import com.bodedimitri.course.entities.Product;
 import com.bodedimitri.course.entities.User;
 import com.bodedimitri.course.enums.OrderStatus;
 import com.bodedimitri.course.repositories.CategoryRepository;
+import com.bodedimitri.course.repositories.OrderItemRepository;
 import com.bodedimitri.course.repositories.OrderRepository;
 import com.bodedimitri.course.repositories.ProductRepository;
 import com.bodedimitri.course.repositories.UserRepository;
@@ -33,6 +35,9 @@ public class TestConfig implements CommandLineRunner {
 	
 	@Autowired
 	private ProductRepository productsRepository;
+	
+	@Autowired
+	private OrderItemRepository orderItemRepository;
 	
 	@Override
 	public void run(String... args) throws Exception { //Tudo colocado dentro desse metodo vai ser executado quando a aplicação for iniciada
@@ -68,6 +73,13 @@ public class TestConfig implements CommandLineRunner {
 
 		userRepository.saveAll(Arrays.asList(u1, u2));
 		orderRepository.saveAll(Arrays.asList(o1, o2, o3));
+		
+		OrderItem oi1 = new OrderItem(o1, p1, 2, p1.getPrice());
+		OrderItem oi2 = new OrderItem(o1, p3, 1, p3.getPrice());
+		OrderItem oi3 = new OrderItem(o2, p3, 2, p3.getPrice());
+		OrderItem oi4 = new OrderItem(o3, p5, 2, p5.getPrice());
+		
+		orderItemRepository.saveAll(Arrays.asList(oi1, oi2, oi3, oi4));
 		
 	}
 }

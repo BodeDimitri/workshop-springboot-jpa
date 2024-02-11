@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.Objects;
 
 import com.bodedimitri.course.entities.pk.OrderItemPK;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
@@ -16,7 +17,7 @@ public class OrderItem implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@EmbeddedId //Por ser uma pk de entidade auxiliar
-	private OrderItemPK id; //Usando a entidade auxiliar
+	private OrderItemPK id = new OrderItemPK(); //Usando a entidade auxiliar //Tem de ser instanciado para evitar um NullPointeerException
 	
 	private Integer quantity;
 	private Double price;
@@ -32,6 +33,7 @@ public class OrderItem implements Serializable {
 		this.price = price;
 	}
 	
+	@JsonIgnore //JsonIgnore não esta sendo usado em um atributo mas esse metodo referencia o atributo
 	public Order getOrder() {
 		return id.getOrder(); //Acessando a nossa entidade auxiliar
 	}
@@ -40,6 +42,7 @@ public class OrderItem implements Serializable {
 		id.setOrder(order);
 	}
 	
+	@JsonIgnore
 	public Product getProduct() {
 		return id.getProduct();
 	}

@@ -2,7 +2,9 @@ package com.bodedimitri.course.entities;
 
 import java.io.Serializable;
 import java.time.Instant;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 import com.bodedimitri.course.enums.OrderStatus;
 import com.fasterxml.jackson.annotation.JsonFormat;
@@ -14,6 +16,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 
@@ -36,6 +39,10 @@ public class Order implements Serializable {
 	@ManyToOne //So seguir a tabela, por se tratar de muitos para um foi usado essa notação
 	@JoinColumn(name = "client_id") // Indica o nome da FK no banco de dados
 	private User client; //Order}--Client
+	
+	@OneToMany(mappedBy = "id.order")
+	private Set<OrderItem> items = new HashSet<>();
+	
 	
 	public Order() {
 		
@@ -80,6 +87,10 @@ public class Order implements Serializable {
 		if(orderStatus != null) {
 			this.orderStatus = orderStatus.getCode();
 		}
+	}
+	
+	public Set<OrderItem> getItems() {
+		return items;
 	}
 
 	@Override
