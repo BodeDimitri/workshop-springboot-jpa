@@ -25,4 +25,12 @@ public class UserService {
 		return obj.get();//Retorna o que foi guardado no optional
 	}
 	
+	public User insert(User obj) {
+		return repository.save(obj);
+	}
+	
+	public void delete(Long id) {
+		repository.deleteById(id);
+	}
+	
 }
