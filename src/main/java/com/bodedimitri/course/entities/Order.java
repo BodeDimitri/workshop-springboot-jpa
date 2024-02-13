@@ -33,7 +33,7 @@ public class Order implements Serializable {
 	private Long id;
 	
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'", timezone = "GMT") //Usado para garantir a formatação da String
-	private Instant moment; //Ta no nome, e um tipo para salvar o momento exato
+	private Instant moment; 
 	
 	private Integer orderStatus;
 	
