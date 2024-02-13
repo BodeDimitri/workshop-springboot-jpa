@@ -1,4 +1,5 @@
-# Projeto Springboo e JPA
+# Projeto Springboot e JPA
+Projeto: Web services com Spring Boot e JPA / Hibernate
 
 <br>
 <h3 align="left">Languages and Tools:</h3>
