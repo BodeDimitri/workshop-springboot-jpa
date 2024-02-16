@@ -5,7 +5,8 @@
 Projeto criado com o intuito de ser usado para uma loja de vendas, possível criar pedidos com diversos dados e status e atribuir categorias.
 <h3>Domain Model</h3>
 <hr>
-![DM](https://github.com/BodeDimitri/workshop-springboot-jpa/blob/master/print/DM.JPG)
+
+![DM]([http://url/to/img.png](https://github.com/BodeDimitri/workshop-springboot-jpa/blob/master/print/DM.JPG))
 
 <br>
 <h3 align="left">Languages and Tools:</h3>
