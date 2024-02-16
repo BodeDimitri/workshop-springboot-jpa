@@ -6,7 +6,7 @@ Projeto criado com o intuito de ser usado para uma loja de vendas, possível cri
 <h3>Domain Model</h3>
 <hr>
 
-![DM]([http://url/to/img.png](https://github.com/BodeDimitri/workshop-springboot-jpa/blob/master/print/DM.JPG))
+![DM](https://github.com/BodeDimitri/workshop-springboot-jpa/blob/master/print/DM.JPG)
 
 <br>
 <h3 align="left">Languages and Tools:</h3>
